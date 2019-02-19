@@ -398,7 +398,7 @@ public class StackIntegrationTest extends CloudFormationIntegrationTestBase {
     private void waitForStackToChangeStatus(StackStatus oldStatus) throws Exception {
         Waiter.run(() -> cf.describeStacks(d -> d.stackName(testStackName)))
               .until(r -> r.stacks().size() == 1 && r.stacks().get(0).stackStatus() != oldStatus)
-              .orFailAfter(Duration.ofMinutes(2));
+              .orFailAfter(Duration.ofMinutes(5));
     }
 
     /**

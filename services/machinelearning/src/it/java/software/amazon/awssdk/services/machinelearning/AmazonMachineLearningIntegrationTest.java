@@ -207,7 +207,7 @@ public class AmazonMachineLearningIntegrationTest extends AwsTestBase {
 
         Prediction prediction = Waiter.run(() -> client.predict(r -> r.predictEndpoint(uri).mlModelId(mlModelId).record(record)))
                                       .ignoringException(PredictorNotMountedException.class)
-                                      .orFailAfter(Duration.ofMinutes(5))
+                                      .orFailAfter(Duration.ofMinutes(10))
                                       .prediction();
 
         System.out.println(prediction.predictedLabel());
